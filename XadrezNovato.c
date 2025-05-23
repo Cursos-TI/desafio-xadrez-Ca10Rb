@@ -1,53 +1,74 @@
 #include <stdio.h>
 
+//Função recursiva torre
+void torre(numeroT)
+{
+    if (numeroT > 0)
+    {
+    printf("Direita\n");
+    torre(numeroT - 1);
+    }
+}
+
+//Função recursiva bispo
+void bispo(int linha, int coluna, int passos)
+{
+   if (passos > 0)
+   {
+
+    for (int i = 0; i < 1; i++) // Mov vertical
+    {
+        printf("Cima\n");
+     
+        for (int j = 0; j < 1; j++) // Mov horizontal
+        {
+            printf("Direita\n");
+        }
+    
+    }
+       bispo(linha - 1, coluna + 1, passos - 1);
+   }
+}
+    
+//Função recursiva rainha
+void rainha(int numeroR)
+{
+    if (numeroR > 0)
+    {
+    printf("Esquerda\n");
+    rainha(numeroR - 1);
+    }
+}
+
+//Função recursiva cavalo
+void cavalo()
+{
+    for(int i = 0; i < 2; i++)
+    {
+       printf("Cima\n");
+    }
+    for (int j = 0; j < 1; j++)
+    {
+       printf("Direita\n");
+    }
+}
+
 int main(){
     
-    int rainha = 1;
-    int bispo = 1;
-    int torre = 1;
-    int cavalo = 1;
-    
-// Movimento da torre
-    while (torre <= 5)
-    {
-        printf("Direita\n");
-        torre++;
-    }
+    //Movimentos
 
-// Movimento do bispo
-    do
-    {
-        printf("Cima e Direita\n");
-        bispo++;
-    } while (bispo <= 5);
+    printf("Movimento da Torre:\n");
+    torre(5);
 
-// Movimento da rainha
-    for (rainha = 1; rainha <= 8; rainha++)
-    {
-        printf("Esquerda\n");
-    }
-    
-// Movimento do cavalo
-   int passobaixo = 2;
-   int passoesquerda = 1;
-   int passoatual = 0;
+    printf("\nMovimento do Bispo:\n");
+    bispo(0, 0, 5); // Linha, Coluna, Passos
 
-   while (cavalo == 1)
-   {
+    printf("\nMovimento da Rainha:\n");
+    rainha(8);
     
-      for (int i = 0; i < passobaixo; i++)
-    {
-        printf("Baixo\n");
-    }
-     
-      while (passoatual < passoesquerda)
-      {
-        printf("Esquerda\n");
-        passoatual++;
-      }
-    cavalo++; // Evitar loop infinito
-   }
-   
+    printf("\nMovimento do Cavalo:\n");
+    cavalo();
+    
 return 0;
 }
 
